@@ -35,7 +35,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jdk.version>1.6</jdk.version>
+        <jdk.version>1.7</jdk.version>
     </properties>
 
     <dependencyManagement>
@@ -54,6 +54,12 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <modules>
+        <module>pg-generator</module>
+        <module>pg-swing</module>
+    </modules>
+
 
     <build>
         <pluginManagement>
