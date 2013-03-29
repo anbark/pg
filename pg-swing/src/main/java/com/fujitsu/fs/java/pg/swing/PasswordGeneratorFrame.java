@@ -9,11 +9,14 @@ import java.util.Properties;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.UIManager.LookAndFeelInfo;
 
 public class PasswordGeneratorFrame extends JFrame {
+
+    private static final String MESSAGES = "/com/fujitsu/fs/java/pg/messages.properties";
 
     private JButton generateButton;
 
@@ -30,8 +33,7 @@ public class PasswordGeneratorFrame extends JFrame {
     public PasswordGeneratorFrame() throws HeadlessException {
         messages = new Properties();
         try {
-            messages.load(getClass().getResourceAsStream(
-                    "/com/fujitsu/fs/java/pg/messages.properties"));
+            messages.load(getClass().getResourceAsStream(MESSAGES));
         } catch (IOException e) {
             System.err.println("Error loading messages");
             e.printStackTrace();
@@ -57,6 +59,17 @@ public class PasswordGeneratorFrame extends JFrame {
     }
 
     public static void main(String[] args) {
+//        try {
+//            for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (Exception e) {
+//            // If Nimbus is not available, you can set the GUI to another look and feel.
+//        }
+        JFrame.setDefaultLookAndFeelDecorated(true);
         PasswordGeneratorFrame frame = new PasswordGeneratorFrame();
     }
 
