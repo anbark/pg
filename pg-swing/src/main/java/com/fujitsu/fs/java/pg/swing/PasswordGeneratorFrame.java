@@ -2,13 +2,18 @@ package com.fujitsu.fs.java.pg.swing;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.ComponentOrientation;
+import java.awt.FlowLayout;
 import java.awt.HeadlessException;
 import java.io.IOException;
 import java.util.Properties;
 
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
@@ -45,14 +50,18 @@ public class PasswordGeneratorFrame extends JFrame {
         setTitle(messages.getProperty("pg.frame.title"));
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
+        JPanel optionsPanel = new JPanel();
+        optionsPanel.setLayout(new BoxLayout(optionsPanel, BoxLayout.Y_AXIS));
+        optionsPanel.setBorder(BorderFactory.createTitledBorder(
+                messages.getProperty("pg.options.title")));
         caseCheckBox = new JCheckBox(messages.getProperty("pg.checkbox.case"));
+        optionsPanel.add(caseCheckBox);
         lettersCheckBox = new JCheckBox(messages.getProperty("pg.checkbox.letters"));
+        optionsPanel.add(lettersCheckBox);
         numbersCheckBox = new JCheckBox(messages.getProperty("pg.checkbox.numbers"));
-        numbersCheckBox.setBackground(Color.RED);
+        optionsPanel.add(numbersCheckBox);
 
-        getContentPane().add(caseCheckBox, BorderLayout.PAGE_START);
-        getContentPane().add(lettersCheckBox);
-        getContentPane().add(numbersCheckBox, BorderLayout.PAGE_END);
+        getContentPane().add(optionsPanel);
 
         pack();
         setVisible(true);
