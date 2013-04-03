@@ -1,14 +1,13 @@
 package com.fujitsu.fs.java.pg.swing;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.ComponentOrientation;
-import java.awt.FlowLayout;
+import java.awt.Dimension;
 import java.awt.HeadlessException;
 import java.io.IOException;
 import java.util.Properties;
 
 import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -16,6 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 
@@ -50,18 +50,34 @@ public class PasswordGeneratorFrame extends JFrame {
         setTitle(messages.getProperty("pg.frame.title"));
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
+//        JPanel container = new JPanel();
+//        container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
+//        container.setBorder(BorderFactory.createEmptyBorder(12, 12, 12, 12));
+//        getContentPane().add(container);
+
         JPanel optionsPanel = new JPanel();
+        optionsPanel.setBackground(Color.YELLOW);
         optionsPanel.setLayout(new BoxLayout(optionsPanel, BoxLayout.Y_AXIS));
+
+        // --- Options -----------------------------------------------------------------------------
+
         optionsPanel.setBorder(BorderFactory.createTitledBorder(
                 messages.getProperty("pg.options.title")));
+        getContentPane().add(optionsPanel);
+
         caseCheckBox = new JCheckBox(messages.getProperty("pg.checkbox.case"));
+        caseCheckBox.setBackground(Color.RED);
         optionsPanel.add(caseCheckBox);
+
         lettersCheckBox = new JCheckBox(messages.getProperty("pg.checkbox.letters"));
+        lettersCheckBox.setBackground(Color.GREEN);
         optionsPanel.add(lettersCheckBox);
+
         numbersCheckBox = new JCheckBox(messages.getProperty("pg.checkbox.numbers"));
+        numbersCheckBox.setBackground(Color.CYAN);
         optionsPanel.add(numbersCheckBox);
 
-        getContentPane().add(optionsPanel);
+        SwingUtils.makeSameWidth(caseCheckBox, lettersCheckBox, numbersCheckBox);
 
         pack();
         setVisible(true);
