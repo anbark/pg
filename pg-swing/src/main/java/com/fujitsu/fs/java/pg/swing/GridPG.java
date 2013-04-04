@@ -1,47 +1,51 @@
 package com.fujitsu.fs.java.pg.swing;
 
 import java.awt.BorderLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+import java.awt.Color;
+import java.awt.ComponentOrientation;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
 
 public class GridPG extends JFrame {
 
     public GridPG() {
+        initGUI();
+    }
+
+    private void initGUI() {
         JPanel mainPanel = new JPanel();
-        mainPanel.setLayout(new GridBagLayout());
+        mainPanel.setLayout(new BorderLayout(0, 17));
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(12, 12, 12, 12));
 
 
+
+        mainPanel.add(new JTextArea(30, 40), BorderLayout.CENTER);
+
+        mainPanel.add(createButtonsPanel(), BorderLayout.PAGE_END);
+
+        getContentPane().add(mainPanel, BorderLayout.CENTER);
+        pack();
+    }
+
+    private JPanel createButtonsPanel() {
+        JPanel buttonContainerPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 0, 0));
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(1, 3, 6, 0));
         buttonPanel.add(new JButton("OK"));
         buttonPanel.add(new JButton("Cancel"));
 
-        GridBagConstraints c = new GridBagConstraints();
-        c.fill = GridBagConstraints.BOTH;
-        c.gridx = 0;
-        c.gridy = 0;
-        mainPanel.add(new JTextArea(), c);
+        buttonContainerPanel.add(buttonPanel);
 
-        c.fill = GridBagConstraints.NONE;
-        c.gridy = 1;
-        c.anchor = GridBagConstraints.LAST_LINE_END;
-        mainPanel.add(buttonPanel, c);
-
-        getContentPane().setLayout(new BorderLayout());
-        getContentPane().add(mainPanel, BorderLayout.CENTER);
-        pack();
+        return buttonContainerPanel;
     }
 
     public static void main(String[] args) {
