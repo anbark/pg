@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTabbedPane;
+import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingUtilities;
 import javax.swing.event.ChangeEvent;
@@ -29,6 +30,7 @@ public class LayoutsDemo extends JFrame {
         tabbedPane.add(createBorderLayoutDemo());
         tabbedPane.add(createFlowLayoutDemo());
         tabbedPane.add(createGridLayoutDemo());
+        tabbedPane.add(createGridBagLayoutDemo());
 
         getContentPane().setLayout(new BorderLayout());
         getContentPane().add(tabbedPane, BorderLayout.CENTER);
@@ -158,6 +160,41 @@ public class LayoutsDemo extends JFrame {
         return mainPanel;
     }
 
+    private JPanel createGridBagLayoutDemo() {
+        JPanel mainPanel = new JPanel(new BorderLayout());
+        mainPanel.setName("GridBagLayout");
+
+        final JPanel container = new JPanel();
+container.setLayout(new GridBagLayout());
+container.setBorder(BorderFactory.createEmptyBorder(12, 12, 12, 12));
+GridBagConstraints gbc = new GridBagConstraints();
+gbc.insets.right = 12;  // JLabel <-> JTextField
+gbc.insets.top = 6; // between fields
+gbc.gridx = 0;
+gbc.gridy = 0;
+container.add(new JLabel("First Name"), gbc);
+gbc.gridy = 1;
+container.add(new JLabel("Last Name"), gbc);
+gbc.gridx = 1;
+gbc.gridy = 0;
+gbc.fill = GridBagConstraints.HORIZONTAL;
+gbc.weightx = 1.0;
+container.add(new JTextField(10), gbc);
+gbc.gridy = 1;
+container.add(new JTextField(10), gbc);
+gbc.weightx = 0;
+gbc.insets.top = 18; // between form fileds and buttons
+gbc.gridx = 0;
+gbc.gridy = 2;
+gbc.gridwidth = 2;
+gbc.fill = GridBagConstraints.HORIZONTAL;
+container.add(new JButton("Save"), gbc);
+
+        mainPanel.add(container, BorderLayout.CENTER);
+
+        return mainPanel;
+    }
+
     private JPanel createBorderLayoutDemo() {
         JPanel mainPanel = new JPanel(new BorderLayout());
         mainPanel.setName("BorderLayout");
@@ -165,10 +202,10 @@ public class LayoutsDemo extends JFrame {
         final JPanel container = new JPanel();
         container.setLayout(new BorderLayout());
         container.add(new JButton("PAGE_START"), BorderLayout.PAGE_START);
-        container.add(new JButton("PAGE_START"), BorderLayout.LINE_START);
-        container.add(new JButton("PAGE_START"), BorderLayout.CENTER);
-        container.add(new JButton("PAGE_START"), BorderLayout.LINE_END);
-        container.add(new JButton("PAGE_START"), BorderLayout.PAGE_END);
+        container.add(new JButton("LINE_START"), BorderLayout.LINE_START);
+        container.add(new JButton("CENTER"), BorderLayout.CENTER);
+        container.add(new JButton("LINE_END"), BorderLayout.LINE_END);
+        container.add(new JButton("PAGE_END"), BorderLayout.PAGE_END);
 
         mainPanel.add(container, BorderLayout.CENTER);
 
