@@ -15,6 +15,7 @@ public class FlowLayoutDemo  extends JFrame {
     }
 
     private void initGUI() {
+        setTitle("FlowLayout");
         JPanel container = new JPanel();
 
         container.setLayout(new FlowLayout(
@@ -22,7 +23,7 @@ public class FlowLayoutDemo  extends JFrame {
         container.add(new JButton("First Button"));
         container.add(new JButton("Button 2"));
         container.add(new JButton("..."));
-        container.add(new JButton("Last Button"));
+        container.add(new JButton("Last"));
 
         getContentPane().add(container);
         pack();

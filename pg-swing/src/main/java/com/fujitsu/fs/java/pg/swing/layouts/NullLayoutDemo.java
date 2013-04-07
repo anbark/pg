@@ -13,13 +13,14 @@ public class NullLayoutDemo  extends JFrame {
     }
 
     private void initGUI() {
+        setTitle("Absolute Positioning");
         JPanel container = new JPanel();
 
-container.setLayout(null);
-JButton button = new JButton("Button");
-// x, y, width, height
-button.setBounds(30, 50, 80, 30);
-container.add(button);
+        container.setLayout(null);
+        JButton button = new JButton("Button");
+        // x, y, width, height
+        button.setBounds(30, 50, 80, 30);
+        container.add(button);
 
         getContentPane().add(container);
         pack();

@@ -15,6 +15,7 @@ public class BorderLayoutDemo  extends JFrame {
     }
 
     private void initGUI() {
+        setTitle("BorderLayout");
         JPanel container = new JPanel();
 
         container.setLayout(new BorderLayout(6, 18));

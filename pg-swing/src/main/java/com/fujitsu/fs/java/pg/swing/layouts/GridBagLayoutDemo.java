@@ -19,6 +19,7 @@ public class GridBagLayoutDemo  extends JFrame {
     }
 
     private void initGUI() {
+        setTitle("GridBagLayout");
         JPanel container = new JPanel();
 
         container.setLayout(new GridBagLayout());

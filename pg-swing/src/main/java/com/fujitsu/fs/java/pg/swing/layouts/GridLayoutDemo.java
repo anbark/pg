@@ -15,6 +15,7 @@ public class GridLayoutDemo  extends JFrame {
     }
 
     private void initGUI() {
+        setTitle("GridLayout");
         JPanel container = new JPanel();
 
         container.setLayout(new GridLayout(
