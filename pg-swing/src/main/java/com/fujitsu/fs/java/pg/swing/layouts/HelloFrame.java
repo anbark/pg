@@ -1,6 +1,5 @@
 package com.fujitsu.fs.java.pg.swing.layouts;
 
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,14 +13,15 @@ public class HelloFrame extends JFrame {
     public HelloFrame() {
         setTitle("Hello Frame");
 
-        final JButton helloButton = new JButton("Say Hello");
+        JButton helloButton = new JButton("Say Hello");
         helloButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(helloButton, "Hello!", "Message",
+                JOptionPane.showMessageDialog(HelloFrame.this, "Hello!", "Message",
                         JOptionPane.INFORMATION_MESSAGE);
             }
         });
-        getContentPane().add(helloButton, BorderLayout.PAGE_END);
+
+        getContentPane().add(helloButton);
         pack();
     }
 

@@ -4,6 +4,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
@@ -19,11 +20,13 @@ public class AddUserFrame extends JFrame {
         setTitle("Add User");
 
         JPanel panel = new JPanel(new MigLayout("fillx, insets dialog", "[align label|fill,grow]"));
-        panel.add(new JLabel("User"));
-        panel.add(new JTextField(20), "wrap");
-        panel.add(new JLabel("First Name"));
-        panel.add(new JTextField(20), "wrap 18");
 
+        panel.add(new JLabel("Username:"));
+        panel.add(new JTextField(20), "wrap");
+        panel.add(new JLabel("First Name:"));
+        panel.add(new JTextField(20), "wrap");
+        panel.add(new JLabel("Address:"), "aligny top");
+        panel.add(new JTextArea(5,  20), "grow, push, wrap 18");
 
         panel.add(new JButton("Help"), "tag help, sizegroup button, span, split 3");
         panel.add(new JButton("Add"), "tag ok, sizegroup button");
